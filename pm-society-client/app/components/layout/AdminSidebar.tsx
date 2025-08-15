@@ -19,6 +19,7 @@ import { useGetMeQuery, useLogoutMutation } from "@/app/redux/services/authApi";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { CgPassword } from "react-icons/cg";
 
 export default function AdminSidebar() {
   const [logout] = useLogoutMutation();
@@ -35,11 +36,7 @@ export default function AdminSidebar() {
     skip: !accessToken,
   });
 
-  useEffect(() => {
-    if (!isLoading && userData && userData.data?.role !== "admin") {
-      router.push("/");
-    }
-  }, [userData, isLoading, router]);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,6 +52,12 @@ export default function AdminSidebar() {
       document.body.style.overflow = "unset";
     };
   }, [isMobileOpen]);
+
+    useEffect(() => {
+    if (!isLoading && userData && userData.data?.role !== "admin") {
+      router.push("/");
+    }
+  }, [userData, isLoading, router]);
 
    const handleLogout = async () => {
     await logout({});
@@ -86,6 +89,11 @@ export default function AdminSidebar() {
       label: "Resources Management",
       href: "/admin/resources-management",
     },
+    {
+      icon: CgPassword ,
+      label: "Change Password",
+      href: "/admin/change-password",
+    }
   ];
 
   const isActive = (href: string) => pathname === href;

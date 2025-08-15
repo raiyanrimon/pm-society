@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaUserTie, FaCertificate, FaBook, FaBullseye } from "react-icons/fa";
+import { FaUserTie, FaCertificate, FaBook, FaBullseye, FaPlay } from "react-icons/fa";
 import localFont from "next/font/local";
 
 const bonVivant = localFont({
@@ -10,7 +10,7 @@ const bonVivant = localFont({
 });
 
 const reasons = [
-  { title: "Your Path to Success", description: "We’re more than training—we’re a full ecosystem of support, strategy, and community.", icon: <FaUserTie className="h-6 w-6" /> },
+  { title: "Your Path to Success", description: "We're more than training—we're a full ecosystem of support, strategy, and community.", icon: <FaUserTie className="h-6 w-6" /> },
   { title: "Pathway to Certification", description: "Live, instructor-led PMP training with expert guidance and real-world readiness.", icon: <FaCertificate className="h-6 w-6" /> },
   { title: "Project Management Mentorship", description: "1-on-1 guidance for aspiring and active project professionals building clarity, confidence, and experience.", icon: <FaBook className="h-6 w-6" /> },
   { title: "Society Membership", description: "Access peer matching, on-demand content, discussion forums, and a thriving community.", icon: <FaBullseye className="h-6 w-6" /> },
@@ -32,7 +32,7 @@ const videoVariants = {
 };
 
 const WhyChoose: React.FC = () => {
-  const [playSound, setPlaySound] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   return (
     <section id="why-choose" className="py-20 md:px-12">
@@ -82,34 +82,43 @@ const WhyChoose: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: YouTube Video as Local-Like Player */}
+          {/* Right: Improved Video Player */}
           <motion.div
             className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl"
             variants={videoVariants}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
-            {/* Overlay Play Button for Sound */}
-            {!playSound && (
-              <div
-                className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
-                onClick={() => setPlaySound(true)}
+            {/* Custom Play Button Overlay - Only shown before video starts */}
+            {!hasStarted && (
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 cursor-pointer"
+                onClick={() => setHasStarted(true)}
+                whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
               >
-                <div className="bg-black/50 px-6 py-3 rounded-xl text-white font-semibold hover:bg-black/70 transition">
-                  Play Video with Sound
-                </div>
-              </div>
+                <motion.div
+                  className="flex items-center justify-center w-20 h-20 bg-white/90 rounded-full shadow-2xl hover:bg-white transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <FaPlay className="w-8 h-8 text-blue-600 ml-1" />
+                </motion.div>
+              </motion.div>
             )}
 
+            {/* YouTube Video Iframe */}
             <iframe
-              src={`https://www.youtube.com/embed/8WTlff0TT_w?autoplay=${playSound ? 1 : 0
-                }&mute=${playSound ? 0 : 1}&loop=1&playlist=8WTlff0TT_w&controls=0&modestbranding=1&rel=0&disablekb=1&showinfo=0`}
+              src={`https://www.youtube.com/embed/8WTlff0TT_w?${hasStarted ? 'autoplay=1&mute=0' : 'mute=1'}&controls=1&modestbranding=1&rel=0&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=1`}
               allow="autoplay; encrypted-media; picture-in-picture"
               className="w-full h-full rounded-xl"
               frameBorder="0"
+              allowFullScreen
+              title="TPMS Training Video"
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </motion.div>
         </motion.div>
       </div>

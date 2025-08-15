@@ -60,26 +60,18 @@ const scaleIn = {
 };
 
 const FloatingParticles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {[...Array(8)].map((_, i) => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+    {[...Array(6)].map((_, i) => (
       <motion.div
         key={i}
-        className="absolute w-3 h-3 bg-white/20 rounded-full"
+        className="absolute w-2 h-2 bg-white/20 rounded-full"
         initial={{
-          x:
-            Math.random() *
-            (typeof window !== "undefined" ? window.innerWidth : 1200),
-          y:
-            Math.random() *
-            (typeof window !== "undefined" ? window.innerHeight : 800),
+          x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+          y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
         }}
         animate={{
-          x:
-            Math.random() *
-            (typeof window !== "undefined" ? window.innerWidth : 1200),
-          y:
-            Math.random() *
-            (typeof window !== "undefined" ? window.innerHeight : 800),
+          x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+          y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
         }}
         transition={{
           duration: 20 + Math.random() * 10,
@@ -181,7 +173,7 @@ export default function ContactPage() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-pink-50/30" />
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-50"
+            className="absolute inset-0 bg-cover bg-center opacity-50 "
             style={{
               backgroundImage: `url('/image/connect.jpeg')`,
             }}
@@ -190,7 +182,7 @@ export default function ContactPage() {
         </motion.div>
 
         {/* Hero Section */}
-        <section className="relative pt-20 pb-16 z-10">
+        <section className="relative pt-16 pb-12 z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="max-w-4xl mx-auto text-center"
@@ -201,22 +193,22 @@ export default function ContactPage() {
               <motion.div variants={fadeInUp}>
                 <Badge
                   variant="outline"
-                  className="mb-6 bg-white/20 backdrop-blur-sm border-black/20 text-black hover:bg-white/30 transition-all duration-300"
+                  className="my-6  bg-white/20 backdrop-blur-sm border-black/20 text-black hover:bg-white/30 transition-all duration-300 text-xs sm:text-sm py-1 sm:py-2 px-3 sm:px-4"
                 >
-                  <Sparkles className="h-4 w-4 mr-2" />
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Get in Touch
                 </Badge>
               </motion.div>
 
               <motion.h1
-                className="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 leading-tight"
                 variants={fadeInUp}
               >
                 Let&apos;s Create Something Amazing Together
               </motion.h1>
 
               <motion.p
-                className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed"
+                className="  md:text-xl text-gray-300 max-w-xl sm:max-w-2xl mx-auto leading-relaxed"
                 variants={fadeInUp}
               >
                 Ready to transform your project management journey? Our expert
@@ -227,29 +219,29 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Section */}
-        <section className="relative py-16 z-10">
+        <section className="relative py-12 sm:py-16 z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-7xl mx-auto"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
               {/* Contact Form */}
               <motion.div variants={fadeInUp}>
-                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl h-full">
-                  <CardContent className="p-8">
+                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl w-full">
+                  <CardContent className="p-6 sm:p-8">
                     <AnimatePresence mode="wait">
                       {isSubmitted ? (
                         <motion.div
-                          className="text-center py-16"
+                          className="text-center py-12 sm:py-16"
                           variants={scaleIn}
                           initial="initial"
                           animate="animate"
                           exit={{ opacity: 0, scale: 0.8 }}
                         >
                           <motion.div
-                            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500 mb-8"
+                            className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-500 mb-6 sm:mb-8"
                             animate={{
                               scale: [1, 1.2, 1],
                               rotate: [0, 360],
@@ -260,18 +252,18 @@ export default function ContactPage() {
                               repeatDelay: 2,
                             }}
                           >
-                            <CheckCircle className="h-10 w-10 text-white" />
+                            <CheckCircle className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                           </motion.div>
-                          <h3 className="text-3xl font-bold text-black mb-4">
+                          <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
                             Message Sent! 🚀
                           </h3>
-                          <p className="text-gray-600 mb-8 text-lg">
+                          <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-lg">
                             Thanks for reaching out! We&apos;ll get back to you
                             within 24 hours.
                           </p>
                           <Button
                             onClick={() => setIsSubmitted(false)}
-                            className="bg-black hover:bg-gray-800 text-white"
+                            className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6"
                             size="lg"
                           >
                             Send Another Message
@@ -285,65 +277,63 @@ export default function ContactPage() {
                           exit={{ opacity: 0, y: -20 }}
                         >
                           <CardHeader className="px-0 pt-0">
-                            <CardTitle className="text-3xl font-bold text-black flex items-center py-5">
-                              <MessageCircle className="h-8 w-8 text-black mr-3" />
+                            <CardTitle className="text-2xl sm:text-3xl font-bold text-black flex items-center py-4 sm:py-5">
+                              <MessageCircle className="h-6 w-6 sm:h-8 sm:w-8 text-black mr-2 sm:mr-3" />
                               Drop Us a Line
                             </CardTitle>
                           </CardHeader>
 
-                          <div className="space-y-6 ">
-                           
-                              <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium ">
-                                  <User className="h-4 w-4 mr-2" />
-                                  Full Name *
-                                </Label>
-                                <Input
-                                  type="text"
-                                  name="name"
-                                  value={formData.name}
-                                  onChange={handleChange}
-                                  className={`bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
-                                    errors.name ? "border-red-500" : ""
-                                  }`}
-                                  placeholder="John Doe"
-                                />
-                                {errors.name && (
-                                  <Alert variant="destructive" className="py-2">
-                                    <AlertDescription className="text-sm">
-                                      {errors.name}
-                                    </AlertDescription>
-                                  </Alert>
-                                )}
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium ">
-                                  <Mail className="h-4 w-4 mr-2" />
-                                  Email Address *
-                                </Label>
-                                <Input
-                                  type="email"
-                                  name="email"
-                                  value={formData.email}
-                                  onChange={handleChange}
-                                  className={`bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
-                                    errors.email ? "border-red-500" : ""
-                                  }`}
-                                  placeholder="john@example.com"
-                                />
-                                {errors.email && (
-                                  <Alert variant="destructive" className="py-2">
-                                    <AlertDescription className="text-sm">
-                                      {errors.email}
-                                    </AlertDescription>
-                                  </Alert>
-                                )}
-                              </div>
-                       
+                          <div className="space-y-4 sm:space-y-6">
+                            <div className="space-y-2">
+                              <Label className="text-black flex items-center font-medium text-sm sm:text-base">
+                                <User className="h-4 w-4 mr-2" />
+                                Full Name *
+                              </Label>
+                              <Input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className={`bg-white/50 py-4 sm:py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all text-sm sm:text-base ${
+                                  errors.name ? "border-red-500" : ""
+                                }`}
+                                placeholder="John Doe"
+                              />
+                              {errors.name && (
+                                <Alert variant="destructive" className="py-2">
+                                  <AlertDescription className="text-xs sm:text-sm">
+                                    {errors.name}
+                                  </AlertDescription>
+                                </Alert>
+                              )}
+                            </div>
 
                             <div className="space-y-2">
-                              <Label className="text-black flex items-center font-medium ">
+                              <Label className="text-black flex items-center font-medium text-sm sm:text-base">
+                                <Mail className="h-4 w-4 mr-2" />
+                                Email Address *
+                              </Label>
+                              <Input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className={`bg-white/50 py-4 sm:py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all text-sm sm:text-base ${
+                                  errors.email ? "border-red-500" : ""
+                                }`}
+                                placeholder="john@example.com"
+                              />
+                              {errors.email && (
+                                <Alert variant="destructive" className="py-2">
+                                  <AlertDescription className="text-xs sm:text-sm">
+                                    {errors.email}
+                                  </AlertDescription>
+                                </Alert>
+                              )}
+                            </div>
+
+                            <div className="space-y-2">
+                              <Label className="text-black flex items-center font-medium text-sm sm:text-base">
                                 <Phone className="h-4 w-4 mr-2" />
                                 Phone Number
                               </Label>
@@ -352,29 +342,29 @@ export default function ContactPage() {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                className="bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all"
+                                className="bg-white/50 py-4 sm:py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all text-sm sm:text-base"
                                 placeholder="+1 (555) 123-4567"
                               />
                             </div>
 
                             <div className="space-y-2">
-                              <Label className="text-black flex items-center font-medium ">
+                              <Label className="text-black flex items-center font-medium text-sm sm:text-base">
                                 <MessageCircle className="h-4 w-4 mr-2" />
                                 Message *
                               </Label>
                               <Textarea
                                 name="message"
-                                rows={5}
+                                rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
-                                className={`resize-none bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
+                                className={`resize-none bg-white/50 py-4 sm:py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all text-sm sm:text-base ${
                                   errors.message ? "border-red-500" : ""
                                 }`}
                                 placeholder="Tell us about your project or how we can help you..."
                               />
                               {errors.message && (
                                 <Alert variant="destructive" className="py-2">
-                                  <AlertDescription className="text-sm">
+                                  <AlertDescription className="text-xs sm:text-sm">
                                     {errors.message}
                                   </AlertDescription>
                                 </Alert>
@@ -384,13 +374,13 @@ export default function ContactPage() {
                             <Button
                               onClick={() => handleSubmit()}
                               disabled={isLoading}
-                              className="w-full bg-black hover:bg-gray-800 text-white"
+                              className="w-full bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6"
                               size="lg"
                             >
                               {isLoading ? (
                                 <>
                                   <motion.div
-                                    className="h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                                    className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-white border-t-transparent rounded-full mr-2"
                                     animate={{ rotate: 360 }}
                                     transition={{
                                       duration: 1,
@@ -402,7 +392,7 @@ export default function ContactPage() {
                                 </>
                               ) : (
                                 <>
-                                  <Send className="h-5 w-5 mr-2" />
+                                  <Send className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                                   Send Message
                                 </>
                               )}
@@ -417,18 +407,18 @@ export default function ContactPage() {
 
               {/* Contact Information */}
               <motion.div variants={fadeInUp}>
-                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl h-full">
-                  <CardContent className="p-8">
-                    <h2 className="text-3xl font-bold text-black mb-6">
+                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl w-full">
+                  <CardContent className="p-6 sm:p-8">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4 sm:mb-6">
                       Get in Touch
                     </h2>
-                    <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                    <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-lg leading-relaxed">
                       Ready to elevate your project management skills?
                       Let&apos;s connect and discuss how we can help you achieve
                       your goals.
                     </p>
 
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {[
                         {
                           icon: Mail,
@@ -478,7 +468,7 @@ export default function ContactPage() {
                         >
                           <div className="flex-shrink-0 mt-1">
                             <motion.div
-                              className={`w-12 h-12 bg-black ${item.hover} rounded-xl flex items-center justify-center transition-colors`}
+                              className={`w-10 h-10 sm:w-12 sm:h-12 bg-black ${item.hover} rounded-xl flex items-center justify-center transition-colors`}
                               whileHover={{ scale: 1.1, rotate: 5 }}
                               transition={{
                                 type: "spring",
@@ -486,18 +476,18 @@ export default function ContactPage() {
                                 damping: 10,
                               }}
                             >
-                              <item.icon className="h-6 w-6 text-white" />
+                              <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                             </motion.div>
                           </div>
-                          <div className="ml-6">
-                            <h3 className="text-xl font-semibold text-black mb-2">
+                          <div className="ml-4 sm:ml-6">
+                            <h3 className="text-lg sm:text-xl font-semibold text-black mb-1 sm:mb-2">
                               {item.title}
                             </h3>
                             <a
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-600 hover:text-black transition-colors whitespace-pre-line"
+                              className="text-gray-600 hover:text-black transition-colors whitespace-pre-line text-sm sm:text-base"
                             >
                               {item.content}
                             </a>

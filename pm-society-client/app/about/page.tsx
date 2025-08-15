@@ -7,7 +7,9 @@ import {
   BiCheckCircle,
   BiTrendingUp,
 } from "react-icons/bi";
-import { FaBookOpen, FaChartLine, FaUsers } from "react-icons/fa";
+import {motion} from "framer-motion";
+
+import { FaBookOpen, FaChartLine, FaUsers, FaPlay } from "react-icons/fa";
 import { GiSparkles } from "react-icons/gi";
 
 import localFont from "next/font/local";
@@ -76,7 +78,7 @@ const teamMembers = [
     role: "Certified Executive Coach & Change Management Practitioner",
     bio: "With a foundation in HR leadership and executive coaching and change management, Toni supports individuals in navigating transformation with authenticity.",
     image:
-      "/image/tony.jpeg",
+      "/image/tony.jpg",
     achievements: "Executive Coaching & Change Leadership",
   },
 ];
@@ -184,6 +186,11 @@ const stats = [
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const videoVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
   useEffect(() => {
     setIsVisible(true);
@@ -194,11 +201,11 @@ export default function AboutPage() {
       <Header />
       <div className="min-h-screen  ">
         {/* Hero Section with Office Background */}
-        <section className="relative pt-28 pb-10 md:pt-40 md:pb-20 overflow-hidden">
+        <section className=" md:min-h-[100vh] relative pt-28 pb-10 md:pt-40 md:pb-20 overflow-hidden">
           {/* Office Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+              src="/image/about.jpeg"
               alt="Modern office workspace"
               fill
               className="object-cover"
@@ -353,6 +360,43 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+          <motion.div
+            className="relative h-96 lg:h-[500px] max-w-4xl mx-auto mt-16 rounded-xl overflow-hidden shadow-xl"
+            variants={videoVariants}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            {/* Custom Play Button Overlay - Only shown before video starts */}
+            {!hasStarted && (
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 cursor-pointer"
+                onClick={() => setHasStarted(true)}
+                whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+              >
+                <motion.div
+                  className="flex items-center justify-center w-20 h-20 bg-white/90 rounded-full shadow-2xl hover:bg-white transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <FaPlay className="w-8 h-8 text-blue-600 ml-1" />
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* YouTube Video Iframe */}
+            <iframe
+              src={`https://www.youtube.com/embed/8WTlff0TT_w?${hasStarted ? 'autoplay=1&mute=0' : 'mute=1'}&controls=1&modestbranding=1&rel=0&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=1`}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              className="w-full h-full rounded-xl"
+              frameBorder="0"
+              allowFullScreen
+              title="TPMS Training Video"
+            />
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          </motion.div>
         </section>
 
         {/* Team Section */}

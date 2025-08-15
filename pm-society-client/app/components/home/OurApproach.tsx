@@ -21,35 +21,35 @@ const steps = [
     description: 'Join our live virtual PMP course to kickstart your journey.',
     icon: <FaSignInAlt className="h-6 w-6  dark:text-blue-400" />,
     image:
-      'https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/image/enroll.jpeg',
   },
   {
     title: 'Learn',
     description: 'Engage in interactive sessions with comprehensive resources.',
     icon: <FaChalkboardTeacher className="h-6 w-6  dark:text-blue-400" />,
     image:
-      'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/image/learn.jpeg',
   },
   {
     title: 'Coach',
     description: 'Receive customized 1:1 guidance tailored to your needs.',
     icon: <FaUserCheck className="h-6 w-6  dark:text-blue-400" />,
     image:
-      'https://images.pexels.com/photos/3184430/pexels-photo-3184430.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/image/coach-2.jpeg',
   },
   {
     title: 'Mentor',
     description: 'Get career strategy support post-certification.',
     icon: <FaHandsHelping className="h-6 w-6  dark:text-blue-400" />,
     image:
-      'https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/image/mentor-2.jpeg',
   },
   {
     title: 'Thrive',
     description: 'Excel in your new project leadership role.',
     icon: <FaTrophy className="h-6 w-6  dark:text-blue-400" />,
     image:
-      'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/image/thrive.jpeg',
   },
 ];
 
