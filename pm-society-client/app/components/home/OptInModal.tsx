@@ -79,10 +79,10 @@ export default function OptInModal({ isOpen, onClose }: OptInModalProps) {
             {/* Content */}
             <div className="relative z-10">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                Take Your Career to New Heights
+                Elevate Your Career with The PM Society! 
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Join our community of project managers and get exclusive access to resources, mentorship, and certification support.
+                Join our community of project professionals and get exclusive access to resources, mentorship, and certification support. 
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">

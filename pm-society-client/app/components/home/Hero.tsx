@@ -27,7 +27,7 @@ export default function Hero() {
         >
           {/* Working video sources */}
           <source
-            src="https://videos.pexels.com/video-files/3192305/3192305-uhd_2560_1440_25fps.mp4"
+            src="/video/welcome.mp4"
             type="video/mp4"
           />
         </video>

@@ -18,7 +18,7 @@ const services = [
       "Get personalized 1:1 support to help you plan, prepare, and succeed in your journey.",
     icon: <FaChalkboardTeacher className="h-8 w-8 dark:text-blue-400" />,
     image:
-      "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "/image/coach.jpeg",
   },
   {
     title: "Mentor",
@@ -26,7 +26,7 @@ const services = [
       "Partner with a seasoned PM for career guidance, real-world insight, and post-certification growth.",
     icon: <FaHandsHelping className="h-8 w-8 dark:text-blue-400" />,
     image:
-      "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "/image/mentor.jpeg",
   },
 ];
 

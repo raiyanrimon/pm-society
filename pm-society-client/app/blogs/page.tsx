@@ -69,9 +69,9 @@ const blogs: BlogPost[] = (blogsResponse && Array.isArray((blogsResponse as unkn
         {/* Hero */}
         <section className="relative overflow-hidden min-h-screen">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/6693655/pexels-photo-6693655.jpeg)'
+            backgroundImage: 'url(/image/blog.jpeg)'
           }} />
-          <div className="absolute inset-0 bg-[#0a192f]/50 z-10" />
+          <div className="absolute inset-0 bg-[#0a192f]/40 z-10" />
           <div className="relative z-20 max-w-7xl mx-auto px-4 py-24 flex items-center min-h-screen">
             <div className={`text-center w-full transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <h2 className={`${bonVivant.className} text-3xl md:text-8xl font-bold text-white mb-6`}>

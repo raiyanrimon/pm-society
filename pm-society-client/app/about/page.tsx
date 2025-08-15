@@ -58,7 +58,7 @@ const teamMembers = [
     role: "Founder & CEO",
     bio: "Blending hands-on leadership in ERP, agile transformation, and education, Olivia has built a community designed to support project professionals.",
     image:
-      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300",
+      "/image/olivia.jpeg",
     achievements: "Strategic Leadership & Delivery",
   },
   {
@@ -67,7 +67,7 @@ const teamMembers = [
     role: "Senior IT Project Manager & PMI ATP Instructor",
     bio: "With a background as a senior IT project manager, PMI ATP instructor, and entrepreneur, Angela leads Agile initiatives in the public sector while developing future project leaders.",
     image:
-      "https://images.pexels.com/photos/3775535/pexels-photo-3775535.jpeg?auto=compress&cs=tinysrgb&w=300",
+      "/image/angela.jpeg",
     achievements: "Agile Delivery & Instruction",
   },
   {
@@ -76,7 +76,7 @@ const teamMembers = [
     role: "Certified Executive Coach & Change Management Practitioner",
     bio: "With a foundation in HR leadership and executive coaching and change management, Toni supports individuals in navigating transformation with authenticity.",
     image:
-      "https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=300",
+      "/image/tony.jpeg",
     achievements: "Executive Coaching & Change Leadership",
   },
 ];

@@ -11,6 +11,9 @@ import {
   User,
   MessageCircle,
   Sparkles,
+  Instagram,
+  Facebook,
+  Linkedin,
 } from "lucide-react";
 
 // shadcn/ui components
@@ -23,13 +26,11 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
-import { BiMapPin } from "react-icons/bi";
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
-  subject: string;
   message: string;
 }
 
@@ -95,7 +96,6 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
-    subject: "",
     message: "",
   });
 
@@ -133,10 +133,6 @@ export default function ContactPage() {
       newErrors.email = "Email is invalid";
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
-    }
-
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
     }
@@ -163,7 +159,6 @@ export default function ContactPage() {
       name: "",
       email: "",
       phone: "",
-      subject: "",
       message: "",
     });
   };
@@ -171,11 +166,12 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <FloatingParticles/>
       <div
         className="min-h-screen relative overflow-hidden"
-        style={{ backgroundColor: "#ECE8E1" }}
+        style={{ backgroundColor: "#333333" }}
       >
+        <FloatingParticles />
+
         {/* Animated Background */}
         <motion.div
           className="absolute inset-0 z-0"
@@ -185,44 +181,13 @@ export default function ContactPage() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-pink-50/30" />
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-50"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`,
+              backgroundImage: `url('/image/connect.jpeg')`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
         </motion.div>
-
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-3 h-3 bg-black/10 rounded-full"
-              initial={{
-                x:
-                  Math.random() *
-                  (typeof window !== "undefined" ? window.innerWidth : 1200),
-                y:
-                  Math.random() *
-                  (typeof window !== "undefined" ? window.innerHeight : 800),
-              }}
-              animate={{
-                x:
-                  Math.random() *
-                  (typeof window !== "undefined" ? window.innerWidth : 1200),
-                y:
-                  Math.random() *
-                  (typeof window !== "undefined" ? window.innerHeight : 800),
-              }}
-              transition={{
-                duration: 20 + Math.random() * 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-          ))}
-        </div>
 
         {/* Hero Section */}
         <section className="relative pt-20 pb-16 z-10">
@@ -272,7 +237,7 @@ export default function ContactPage() {
             >
               {/* Contact Form */}
               <motion.div variants={fadeInUp}>
-                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl">
+                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl h-full">
                   <CardContent className="p-8">
                     <AnimatePresence mode="wait">
                       {isSubmitted ? (
@@ -326,10 +291,10 @@ export default function ContactPage() {
                             </CardTitle>
                           </CardHeader>
 
-                          <div className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="space-y-6 ">
+                           
                               <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium">
+                                <Label className="text-black flex items-center font-medium ">
                                   <User className="h-4 w-4 mr-2" />
                                   Full Name *
                                 </Label>
@@ -338,7 +303,7 @@ export default function ContactPage() {
                                   name="name"
                                   value={formData.name}
                                   onChange={handleChange}
-                                  className={`bg-white/50 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
+                                  className={`bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
                                     errors.name ? "border-red-500" : ""
                                   }`}
                                   placeholder="John Doe"
@@ -353,7 +318,7 @@ export default function ContactPage() {
                               </div>
 
                               <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium">
+                                <Label className="text-black flex items-center font-medium ">
                                   <Mail className="h-4 w-4 mr-2" />
                                   Email Address *
                                 </Label>
@@ -362,7 +327,7 @@ export default function ContactPage() {
                                   name="email"
                                   value={formData.email}
                                   onChange={handleChange}
-                                  className={`bg-white/50 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
+                                  className={`bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
                                     errors.email ? "border-red-500" : ""
                                   }`}
                                   placeholder="john@example.com"
@@ -375,51 +340,25 @@ export default function ContactPage() {
                                   </Alert>
                                 )}
                               </div>
-                            </div>
+                       
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium">
-                                  <Phone className="h-4 w-4 mr-2" />
-                                  Phone Number
-                                </Label>
-                                <Input
-                                  type="tel"
-                                  name="phone"
-                                  value={formData.phone}
-                                  onChange={handleChange}
-                                  className="bg-white/50 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all"
-                                  placeholder="+1 (555) 123-4567"
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label className="text-black flex items-center font-medium">
-                                  <MessageCircle className="h-4 w-4 mr-2" />
-                                  Subject *
-                                </Label>
-                                <Input
-                                  type="text"
-                                  name="subject"
-                                  value={formData.subject}
-                                  onChange={handleChange}
-                                  className={`bg-white/50 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
-                                    errors.subject ? "border-red-500" : ""
-                                  }`}
-                                  placeholder="How can we help?"
-                                />
-                                {errors.subject && (
-                                  <Alert variant="destructive" className="py-2">
-                                    <AlertDescription className="text-sm">
-                                      {errors.subject}
-                                    </AlertDescription>
-                                  </Alert>
-                                )}
-                              </div>
+                            <div className="space-y-2">
+                              <Label className="text-black flex items-center font-medium ">
+                                <Phone className="h-4 w-4 mr-2" />
+                                Phone Number
+                              </Label>
+                              <Input
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all"
+                                placeholder="+1 (555) 123-4567"
+                              />
                             </div>
 
                             <div className="space-y-2">
-                              <Label className="text-black flex items-center font-medium">
+                              <Label className="text-black flex items-center font-medium ">
                                 <MessageCircle className="h-4 w-4 mr-2" />
                                 Message *
                               </Label>
@@ -428,7 +367,7 @@ export default function ContactPage() {
                                 rows={5}
                                 value={formData.message}
                                 onChange={handleChange}
-                                className={`resize-none bg-white/50 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
+                                className={`resize-none bg-white/50 py-5 backdrop-blur-sm border-white/30 focus:border-black focus:ring-black/20 focus:bg-white/70 transition-all ${
                                   errors.message ? "border-red-500" : ""
                                 }`}
                                 placeholder="Tell us about your project or how we can help you..."
@@ -477,8 +416,8 @@ export default function ContactPage() {
               </motion.div>
 
               {/* Contact Information */}
-              <motion.div className="space-y-8" variants={fadeInUp}>
-                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl">
+              <motion.div variants={fadeInUp}>
+                <Card className="bg-white/70 backdrop-blur-xl border-white/30 shadow-2xl h-full">
                   <CardContent className="p-8">
                     <h2 className="text-3xl font-bold text-black mb-6">
                       Get in Touch
@@ -495,23 +434,36 @@ export default function ContactPage() {
                           icon: Mail,
                           title: "Email Us",
                           content: "contact@thepmsociety.com",
-                       
+                          href: "mailto:contact@thepmsociety.com",
                           hover: "hover:bg-blue-600",
                         },
                         {
                           icon: Phone,
                           title: "Call Us",
                           content: "832-535-5064",
-                         
+                          href: "tel:8325355064",
                           hover: "hover:bg-green-600",
                         },
                         {
-                          icon: MapPin,
-                          title: "Visit Us",
-                          content:
-                            "3120 Southwest Fwy Ste 101 #341344\nHouston, TX 77098-4520",
-                        
+                          icon: Instagram,
+                          title: "Instagram",
+                          content: "@thepmsociety",
+                          href: "https://www.instagram.com/thepmsociety",
                           hover: "hover:bg-purple-600",
+                        },
+                        {
+                          icon: Facebook,
+                          title: "Facebook",
+                          content: "@thepmsociety",
+                          href: "https://www.facebook.com/thepmsociety",
+                          hover: "hover:bg-blue-600",
+                        },
+                        {
+                          icon: Linkedin,
+                          title: "LinkedIn",
+                          content: "@thepmsociety",
+                          href: "https://www.linkedin.com/company/thepmsociety",
+                          hover: "hover:bg-blue-800",
                         },
                       ].map((item, index) => (
                         <motion.div
@@ -541,9 +493,14 @@ export default function ContactPage() {
                             <h3 className="text-xl font-semibold text-black mb-2">
                               {item.title}
                             </h3>
-                            <p className="text-gray-600 hover:text-black transition-colors whitespace-pre-line">
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-600 hover:text-black transition-colors whitespace-pre-line"
+                            >
                               {item.content}
-                            </p>
+                            </a>
                           </div>
                         </motion.div>
                       ))}
@@ -551,37 +508,6 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
               </motion.div>
-            </motion.div>
-
-            {/* Interactive Map */}
-            <motion.div
-              className="mt-16"
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-            >
-              <div className="relative pt-10">
-                <div className="relative bg-white/50 backdrop-blur-xl rounded-2xl p-8 border border-black/10 shadow-[inset_0_0_0.3rem_rgba(255,255,255,0.3),0_8px_30px_rgba(0,0,0,0.2)]">
-                  <h3 className="text-xl font-semibold text-black mb-5  flex items-center">
-                    <BiMapPin className="h-6 w-6 text-black mr-3" />
-                    Our Location
-                  </h3>
-                  <div className="h-80 rounded-xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.615717625413!2d-95.4311469204164!3d29.73088876913268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c0fa10955555%3A0x5bc4a9cde482b607!2s3120%20Southwest%20Fwy%20ste%20101%2C%20Houston%2C%20TX%2077098%2C%20USA!5e0!3m2!1sen!2sbd!4v1748637458660!5m2!1sen!2sbd"
-                      width="100%"
-                      height="100%"
-                      style={{
-                        border: 0,
-                        filter: "grayscale(20%) brightness(0.9)",
-                      }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </section>

@@ -9,7 +9,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://pm-society.vercel.app"],
+    origin: ["https://www.thepmsociety.com","http://localhost:3000", "https://pm-society.vercel.app"],
     credentials: true,
   })
 );

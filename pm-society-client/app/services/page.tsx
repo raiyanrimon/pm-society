@@ -127,7 +127,7 @@ export default function ServicesPage() {
         "Agile & Scrum Practice Deep Dives",
         "Open-Topic Sessions",
       ],
-      price: "3 sessions for $400 (Society Members: 20% off)",
+      price: "3 sessions for $400",
       cta: "Book Now",
       ctaLink: "enroll",
       featured: false,
@@ -144,14 +144,14 @@ export default function ServicesPage() {
           {/* Background image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=1920"
+              src="/image/olivia.jpeg"
               alt="Team collaboration in modern workspace"
               fill
               className="object-cover"
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 z-10" />
+            <div className="absolute inset-0 bg-black/40 z-10" />
           </div>
 
           <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">

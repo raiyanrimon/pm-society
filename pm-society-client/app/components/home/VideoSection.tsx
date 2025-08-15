@@ -11,7 +11,7 @@ const bonVivant = localFont({
 
 export default function VideoSection() {
   return (
-    <section className="py-16  relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
@@ -32,7 +32,7 @@ export default function VideoSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-           See How TPMS Supports the 
+            See How TPMS Supports the
           </motion.h2>
           <motion.h2
             className={`${bonVivant.className} text-3xl md:text-5xl font-bold text-gray-900 mb-4`}
@@ -41,7 +41,7 @@ export default function VideoSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-          Journey — Not Just the Exam
+            Journey — Not Just the Exam
           </motion.h2>
 
           <motion.p
@@ -51,7 +51,7 @@ export default function VideoSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-           We help you build real skills, lasting confidence, and a career in project leadership that goes beyond the credential.
+            We help you build real skills, lasting confidence, and a career in project leadership that goes beyond the credential.
           </motion.p>
         </motion.div>
 
@@ -64,7 +64,7 @@ export default function VideoSection() {
           <VideoCard
             thumbnailUrl="https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg"
             title="The TPMS Difference"
-            videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+            videoUrl="https://drive.google.com/file/d/1Nv-GvDM1CYFGEox8bCtLzVeFcnJlC3ra/preview"
           />
         </motion.div>
       </div>
@@ -81,7 +81,6 @@ interface VideoCardProps {
 function VideoCard({ thumbnailUrl, title, videoUrl }: VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
 
   return (
     <motion.div
@@ -108,7 +107,7 @@ function VideoCard({ thumbnailUrl, title, videoUrl }: VideoCardProps) {
               <iframe
                 src={videoUrl}
                 title={title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; fullscreen"
                 allowFullScreen
                 className="absolute top-0 left-0 w-full h-full rounded-xl"
               />
@@ -218,8 +217,6 @@ function VideoCard({ thumbnailUrl, title, videoUrl }: VideoCardProps) {
           )}
         </AnimatePresence>
       </div>
-
-
     </motion.div>
   );
 }
